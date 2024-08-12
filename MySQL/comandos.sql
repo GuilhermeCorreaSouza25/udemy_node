@@ -1,0 +1,11 @@
+-- UPDATE usuarios SET nome = "Maria Clara" WHERE nome = "Ana Clara";
+-- DELETE FROM usuarios WHERE nome = "Guilherme Correa";
+-- SELECT * FROM usuarios WHERE idade >= 18;
+-- SELECT * FROM usuarios WHERE nome = "Guilherme Correa";
+-- SELECT * FROM usuarios WHERE idade = 60;
+
+-- INSERT INTO usuarios(idade, email, nome) VALUES(
+--   6,
+--   "ana.clara@exemplo.com",
+--   "Ana Clara"
+-- );
