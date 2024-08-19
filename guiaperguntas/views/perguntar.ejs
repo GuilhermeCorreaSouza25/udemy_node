@@ -11,17 +11,39 @@
 </head>
 
 <body>
+  <nav class="navbar navbar-light bg-primary">
+    <a class="navbar-brand" href="/">
+      <img src="/guiaperguntas/public/img/guia.png">
+    </a>
+  </nav>
   <div class="container">
-    <h3>Realizar pergunta</h3>
-    <form action="/perguntar" method="post">
+    <div class="card" id="formulario-pergunta">
+      <div class="card-header">
+        <h3>Realizar pergunta</h3>
+      </div>
+      <div class="card-body">
+        <form>
+          <label>Título</label>
+            <input type="text" placeholder="Título" class="form-control">
+          <br><label>Descrição</label>
+          <textarea placeholder="Descreva sua pergunta aqui" class="form-control"></textarea>
+          <br>
+          <button class="btn btn-primary">Perguntar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+    <!-- <form action="/perguntar" method="post">
       
         <label for="titulo">Título</label>
         <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Digite o título da pergunta">
       
-        <label for="descricao">Descrição</label>
+        <br><label for="descricao">Descrição</label>
         <textarea class="form-control" id="descricao" name="descricao" rows="3"
           placeholder="Digite a descrição da pergunta"></textarea>
-  </div>
+        <br><button class="btn btn-success">Perguntar</button>
+    </form> -->
+ 
 </body>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
   integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
