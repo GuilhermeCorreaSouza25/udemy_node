@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,8 +9,19 @@
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/bootstrap.min.css">
 </head>
+
 <body>
-  <h3>Estilo bootstrap</h3>
+  <div class="container">
+    <h3>Realizar pergunta</h3>
+    <form action="/perguntar" method="post">
+      
+        <label for="titulo">Título</label>
+        <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Digite o título da pergunta">
+      
+        <label for="descricao">Descrição</label>
+        <textarea class="form-control" id="descricao" name="descricao" rows="3"
+          placeholder="Digite a descrição da pergunta"></textarea>
+  </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
   integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -17,4 +29,5 @@
   integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 
 <script src="/guiaperguntas/public/js/bootstrap.min.js"></script>
+
 </html>
