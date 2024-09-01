@@ -45,7 +45,7 @@ app.use('/', categoriesController);
 app.use('/', articlesController);
 app.use("/", usersController);
 
-app.get("/", (req, res) => {
+app.get("/login", (req, res) => {
     Article.findAll({
         order:[
             ['id','DESC']
