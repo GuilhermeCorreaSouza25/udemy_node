@@ -1,7 +1,12 @@
 const express = require("express");
 const app = express();
 const bodyParser =  require("body-parser");
+const cors = require("cors");
+const jwt = require("jasonwebtoken");
 
+const JWTSecret = "ahsjdohasjhfuiafueghrhjgeanadbssahduatreea"
+
+app.use(cors())
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json());
 
@@ -25,6 +30,20 @@ var DB = {
             name: "Minecraft",
             year: 2012,
             price: 45
+        }
+    ],
+    "users": [
+        {
+            id: 1,
+            name: "Lucas",
+            email: "lucas@teste.com",
+            password: "123456"
+        },
+        {
+            id: 2,
+            name: "João",
+            email: "joao@teste.com",
+            password: "123456"
         }
     ]
 }
@@ -105,6 +124,35 @@ app.put("/games/:id", (req, res) => {
         }else{
             res.sendStatus(404)
         }
+    }
+})
+
+app.post("/auth", (req, res) => {
+    var {email, password} = req.body
+
+    if(email != undefined){
+        var user = DB.users.find(u => u.email == email)
+        if(user != undefined){
+            if(user.password == password){
+                jwt.sign({id: user.id, email: user.email}, JWTSecret, {expiresIn: "48h"}, (err, token) => {
+                    if(err){
+                        res.status(400)
+                        res.json({err: "Falha interna"})
+                    }else{
+                        res.status(200)
+                        res.json({token: token})
+                    }
+                })
+            }else{
+                res.status(401)
+                res.json({err: "Credenciais inválidas"})
+            }
+
+        }else{
+            res.sendStatus(404)
+        }
+    }else{
+        res.sendStatus(400)
     }
 })
 
