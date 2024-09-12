@@ -4,12 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loja de games</title>
-
     <h2>Login</h2>
     <input type="text" name="email" id="email" placeholder="E-mail"><br>
     <input type="text" name="password" id="password" placeholder="Senha"><br>
     <button type="button" onclick="login()">Entrar</button>
-
     <hr>
     <h4>Lista de games</h4>
     <ul id="games"></ul>
@@ -26,7 +24,6 @@
     <input type="number" name="yearEdit" id="yearEdit" placeholder="Ano"><br>
     <input type="number" name="priceEdit" id="priceEdit" placeholder="Preço"><br>
     <button type="button" onclick="updateGame()">Editar</button>
-
 </head>
 <body>
     
@@ -146,14 +143,11 @@
             deleteBtn.addEventListener("click",function(){
                 deleteGame(item)
             })
-
             var editBtn = document.createElement("button");
             editBtn.innerHTML = "Editar";
             editBtn.addEventListener("click",function(){
                 loadForm(item);
             });
-
-
             item.appendChild(deleteBtn);
             item.appendChild(editBtn);
 
@@ -163,6 +157,5 @@
     }).catch(error => {
         console.log(error);
     });
-
 </script>
 </html>
