@@ -5,8 +5,8 @@
         <p>Email: {{ processarEmail(cliente.email) }}</p>
         <p v-if="showIdade === true">Idade: {{cliente.idade}}</p>
         <p v-else>O usuário escondeu a idade!</p>
-        <button @click="mudarCor($event)">Mudar cor!</button>
-        <button @click="emitirEventoDelete">Deletar</button>
+        <button @click="mudarCor($event)" class="button is-primary">Mudar cor!</button>
+        <button @click="emitirEventoDelete" class="button is-danger">Deletar</button>
         <h4>Id especial: {{idEspecial}}</h4>
     </div>
 </template>
@@ -36,7 +36,7 @@ export default {
             alert("Isso é um alert!");
         },
         processarEmail: function(value){
-            return "GUIADOPROGRAMADOR."+ value.toUpperCase();
+            return value.toUpperCase();
         }
 
     },

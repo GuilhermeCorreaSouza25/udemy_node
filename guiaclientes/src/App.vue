@@ -1,17 +1,17 @@
 <template>
   <div id="app">
 
-  <div class="buttons">
+  <!-- <div class="buttons">
     <button class="button is-primary">Primary</button>
     <button class="button is-link">Link</button>
-  </div>
+  </div> -->
 
     <h3>Cadastro: </h3>
     <small id="nomeErro" v-show="deuErro">O nome é inválido, tente novamente!</small><br>
     <input type="text" placeholder="nome" v-model="nomeField"> <br>
     <input type="email" placeholder="email" v-model="emailField"> <br>
     <input type="number" placeholder="idade" v-model="idadeField"> <br>
-    <button @click="cadastrarUsuario">Cadastrar</button>
+    <button @click="cadastrarUsuario" class="button is-success">Cadastrar</button>
     <hr>
     <div v-for="(cliente,index) in orderClientes" :key="cliente.id">
         <h4>{{ index + 1 }}</h4>
