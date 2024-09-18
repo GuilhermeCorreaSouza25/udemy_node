@@ -4,6 +4,14 @@ const PasswordToken = require("./PasswordToken");
 
 class User{
 
+    async new(email, password, name){
+        try{
+            await knex.insert({email, password, name, role: 0}).table("users");
+        }catch(err){
+            console.log(err);
+        }
+    }
+
     async findAll(){
         try{
             var result = await knex.select(["id","email","role","name"]).table("users");

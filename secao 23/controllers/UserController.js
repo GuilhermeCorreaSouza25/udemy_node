@@ -34,7 +34,7 @@ class UserController{
             res.json({err: "O e-mail é inválido!"})
             return;
         }
-
+        
         var emailExists = await User.findEmail(email);
 
         if(emailExists){
