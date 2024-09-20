@@ -9,6 +9,10 @@ io.on("connection", (socket) => {
         console.log("Client disconnected " + socket.id);
     })
 
+    socket.on("msg", (data) => {
+        io.emit("showmsg", data);
+        console.log(data);
+    })
 
     // socket.on("boasvindas", (data => {
     //     console.log("EXECUTANDO EVENTO DE BOAS VINDAS")
