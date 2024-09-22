@@ -3,8 +3,9 @@ let express = require("express");
 let app = express();
 let mongoose = require("mongoose");
 let userSchema = require("./models/User"); // Importa o esquema, não o modelo diretamente
-let bcrypt = require("bcrypt")
-
+let bcrypt = require("bcrypt");
+let jwt = require("jsonwebtoken");
+let JWTSecret = "adhuasidihfgiuaghaiysduqwherjqfjhbjaskhgdtysxtyqwyietqwrghbhvnmkn"
 // Middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -55,6 +56,33 @@ app.post("/user", async (req, res) => {
         res.status(500).send("Erro ao criar usuário");
     }
 });
+
+app.post("/auth", async(req, res) => {
+    let { email, password } = req.body;
+
+    let user = await User.findOne({"email": email})
+    if(user == undefined){
+        res.statusCode = 400;
+        res.json({errors: {email: "E-mail não cadastrado"}})
+        return;
+    }
+
+    let isPasswordRight = await bcrypt.compare(password,user.password);
+
+    if(!isPasswordRight){
+        res.statusCode = 400;
+        res.json({errors: {password: "Senha incorreta"}})
+        return;
+    }
+
+    jwt.sign({email, name: user.name, id: user._id}, JWTSecret, {expiresIn:'48h'}, (err, token) => {
+        if(err){
+            res.status(400).json({error: "Falha interna"});
+        } else {
+            res.status(200).json({token});
+        }
+    })
+})
 
 app.delete("user/:email", async (req, res) => {
     await User.deleteOne({"email": req.params.email});
